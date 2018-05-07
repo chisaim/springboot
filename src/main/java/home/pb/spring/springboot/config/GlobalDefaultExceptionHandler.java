@@ -11,9 +11,8 @@ public class GlobalDefaultExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     @ResponseBody
-    public String defaultErrorHandler(HttpServletRequest request,Exception e){
-
-        return "sorry";
+    public void defaultErrorHandler(HttpServletRequest request,Exception e){
+        e.printStackTrace();
     }
 
 }

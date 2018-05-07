@@ -2,6 +2,7 @@ package home.pb.spring.springboot.entity;
 
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "t_customer")
@@ -34,6 +35,16 @@ public class Customer {
 
     @Column
     private long creditLimit;
+
+    private Date createDate;
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
 
     public long getCustomerId() {
         return customerId;
