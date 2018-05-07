@@ -27,8 +27,12 @@ public class TemplatesController {
         customer.setCustomerName("SanSan");
         customer.setCreateDate(new Date());
         customer.setCreditLimit(445566887);
-        return "hello";
+        return "hello_thymeleaf";
     }
 
-
+    @RequestMapping(value = "/helloFtl")
+    public String helloFtl(Map<String,String> map){
+        map.put("hello","from TemplateController.helloFtl");
+        return "hello_freemarker";
+    }
 }
