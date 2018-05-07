@@ -35,4 +35,10 @@ public class TemplatesController {
         map.put("hello","from TemplateController.helloFtl");
         return "hello_freemarker";
     }
+
+    @RequestMapping(value = "/helloJsp")
+    public String helloJsp(Map<String,String> map){
+        map.put("hello","from TemplateController.helloJsp");
+        return "hello_jsp";
+    }
 }
