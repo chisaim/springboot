@@ -7,7 +7,7 @@ import org.springframework.scheduling.quartz.CronTriggerFactoryBean;
 import org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 
-@Configuration
+
 public class ScheduledConfiguration {
 
     @Bean
@@ -23,7 +23,7 @@ public class ScheduledConfiguration {
     public CronTriggerFactoryBean cronTriggerFactoryBean(MethodInvokingJobDetailFactoryBean detailFactoryBean){
         CronTriggerFactoryBean cronTriggerFactoryBean = new CronTriggerFactoryBean();
         cronTriggerFactoryBean.setJobDetail(detailFactoryBean.getObject());
-        cronTriggerFactoryBean.setCronExpression("0/5 * * * * *");
+        cronTriggerFactoryBean.setCronExpression("0/5 * * ? * *");
         return cronTriggerFactoryBean;
     }
 
