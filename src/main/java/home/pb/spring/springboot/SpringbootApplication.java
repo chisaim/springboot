@@ -18,18 +18,19 @@ import org.springframework.boot.autoconfigure.web.servlet.WebMvcProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 @SpringBootApplication
 @MapperScan("home.pb.spring.springboot.mapper")
-public class SpringbootApplication extends WebMvcConfigurationSupport{
+//public class SpringbootApplication extends WebMvcConfigurationSupport{
+public class SpringbootApplication implements WebMvcConfigurer {
 
 
 	public static void main(String[] args) throws SchedulerException, InterruptedException {
-		SpringApplication.run(SpringbootApplication.class, args);
+		SpringApplication.run(SpringbootApplication.class, new String[]{"SanSan","ErEr","ChiSaiM"});
 		System.out.println("scheduler.start.");
 		//调度器实例,并启动调度器
 		Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
@@ -60,11 +61,8 @@ public class SpringbootApplication extends WebMvcConfigurationSupport{
 		return pageHelper;
 	}
 
-	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-
 		registry.addInterceptor(new Myinterceptor1());
 		registry.addInterceptor(new Myinterceptor2());
-		super.addInterceptors(registry);
 	}
 }
