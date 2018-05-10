@@ -107,6 +107,12 @@
 			<artifactId>quartz</artifactId>
 			<version>2.2.3</version>
 		</dependency>
+		<!--读取*.properties文件（包括自定义properties）中的内容并转为JavaBean-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
 	</dependencies>
 
 	<build>
