@@ -14,6 +14,7 @@ import org.quartz.impl.StdSchedulerFactory;
 import org.springframework.beans.factory.ListableBeanFactory;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
 import org.springframework.boot.autoconfigure.web.ResourceProperties;
@@ -22,6 +23,7 @@ import org.springframework.boot.autoconfigure.web.servlet.WebMvcProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -29,10 +31,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
-@SpringBootApplication
 @MapperScan("home.pb.spring.springboot.mapper")
 @EnableConfigurationProperties(value = {EmailProperties.class, SpringDatasource.class, Email2Properties.class})
-@ComponentScan(basePackages = {"home.pb.spring.springboot","home2.pb","home1.pb"})
+//@ComponentScan(basePackages = {"home.pb.spring.springboot","home2.pb","home1.pb"})
+//@EnableAutoConfiguration
+//@Configuration
+//@ComponentScan
+@SpringBootApplication//等同于上面三个注解，这个是三合一注解
 //public class SpringbootApplication extends WebMvcConfigurationSupport{
 public class SpringbootApplication implements WebMvcConfigurer {
 
