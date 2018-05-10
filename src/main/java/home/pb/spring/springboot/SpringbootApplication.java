@@ -3,6 +3,7 @@ package home.pb.spring.springboot;
 import com.github.pagehelper.PageHelper;
 import home.pb.spring.springboot.Interceptor.Myinterceptor1;
 import home.pb.spring.springboot.Interceptor.Myinterceptor2;
+import home.pb.spring.springboot.config.SpringBeanJobFactory;
 import home.pb.spring.springboot.properties.Email2Properties;
 import home.pb.spring.springboot.properties.EmailProperties;
 import home.pb.spring.springboot.properties.SpringDatasource;
@@ -20,6 +21,7 @@ import org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguratio
 import org.springframework.boot.autoconfigure.web.servlet.WebMvcProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -30,6 +32,7 @@ import java.util.concurrent.TimeUnit;
 @SpringBootApplication
 @MapperScan("home.pb.spring.springboot.mapper")
 @EnableConfigurationProperties(value = {EmailProperties.class, SpringDatasource.class, Email2Properties.class})
+@ComponentScan(basePackages = {"home.pb.spring.springboot","home2.pb","home1.pb"})
 //public class SpringbootApplication extends WebMvcConfigurationSupport{
 public class SpringbootApplication implements WebMvcConfigurer {
 
