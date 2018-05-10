@@ -1,5 +1,7 @@
 package home.pb.spring.springboot.entity;
 
+import java.util.Date;
+
 public class TCustomer {
     private Long customer_id;
 
@@ -19,7 +21,9 @@ public class TCustomer {
 
     private Long sale_employee_id;
 
-    public TCustomer(Long customer_id, String address, String city, String contact_name, Long credit_limit, String customer_name, String phone, String province, Long sale_employee_id) {
+    private Date createdate;
+
+    public TCustomer(Long customer_id, String address, String city, String contact_name, Long credit_limit, String customer_name, String phone, String province, Long sale_employee_id, Date createdate) {
         this.customer_id = customer_id;
         this.address = address;
         this.city = city;
@@ -29,6 +33,7 @@ public class TCustomer {
         this.phone = phone;
         this.province = province;
         this.sale_employee_id = sale_employee_id;
+        this.createdate = createdate;
     }
 
     public TCustomer() {
@@ -105,5 +110,13 @@ public class TCustomer {
 
     public void setSale_employee_id(Long sale_employee_id) {
         this.sale_employee_id = sale_employee_id;
+    }
+
+    public Date getCreatedate() {
+        return createdate;
+    }
+
+    public void setCreatedate(Date createdate) {
+        this.createdate = createdate;
     }
 }

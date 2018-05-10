@@ -64,6 +64,10 @@ public class TCustomerSqlProvider {
             sql.VALUES("saleEmployeeId", "#{sale_employee_id,jdbcType=BIGINT}");
         }
         
+        if (record.getCreatedate() != null) {
+            sql.VALUES("createDate", "#{createdate,jdbcType=TIMESTAMP}");
+        }
+        
         return sql.toString();
     }
 
@@ -82,6 +86,7 @@ public class TCustomerSqlProvider {
         sql.SELECT("phone");
         sql.SELECT("province");
         sql.SELECT("saleEmployeeId");
+        sql.SELECT("createDate");
         sql.FROM("t_customer");
         applyWhere(sql, example, false);
         
@@ -135,6 +140,10 @@ public class TCustomerSqlProvider {
             sql.SET("saleEmployeeId = #{record.sale_employee_id,jdbcType=BIGINT}");
         }
         
+        if (record.getCreatedate() != null) {
+            sql.SET("createDate = #{record.createdate,jdbcType=TIMESTAMP}");
+        }
+        
         applyWhere(sql, example, true);
         return sql.toString();
     }
@@ -152,6 +161,7 @@ public class TCustomerSqlProvider {
         sql.SET("phone = #{record.phone,jdbcType=VARCHAR}");
         sql.SET("province = #{record.province,jdbcType=VARCHAR}");
         sql.SET("saleEmployeeId = #{record.sale_employee_id,jdbcType=BIGINT}");
+        sql.SET("createDate = #{record.createdate,jdbcType=TIMESTAMP}");
         
         TCustomerExample example = (TCustomerExample) parameter.get("example");
         applyWhere(sql, example, true);
@@ -192,6 +202,10 @@ public class TCustomerSqlProvider {
         
         if (record.getSale_employee_id() != null) {
             sql.SET("saleEmployeeId = #{sale_employee_id,jdbcType=BIGINT}");
+        }
+        
+        if (record.getCreatedate() != null) {
+            sql.SET("createDate = #{createdate,jdbcType=TIMESTAMP}");
         }
         
         sql.WHERE("customerId = #{customer_id,jdbcType=BIGINT}");
