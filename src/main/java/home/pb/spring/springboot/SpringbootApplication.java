@@ -3,11 +3,14 @@ package home.pb.spring.springboot;
 import com.github.pagehelper.PageHelper;
 import home.pb.spring.springboot.Interceptor.Myinterceptor1;
 import home.pb.spring.springboot.Interceptor.Myinterceptor2;
+import home.pb.spring.springboot.config.JerseyConfig;
 import home.pb.spring.springboot.config.SpringBeanJobFactory;
 import home.pb.spring.springboot.properties.Email2Properties;
 import home.pb.spring.springboot.properties.EmailProperties;
 import home.pb.spring.springboot.properties.SpringDatasource;
 import home.pb.spring.springboot.quartz.HelloJob;
+import org.glassfish.jersey.servlet.ServletContainer;
+import org.glassfish.jersey.servlet.ServletProperties;
 import org.mybatis.spring.annotation.MapperScan;
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
@@ -21,6 +24,7 @@ import org.springframework.boot.autoconfigure.web.ResourceProperties;
 import org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration;
 import org.springframework.boot.autoconfigure.web.servlet.WebMvcProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -88,5 +92,14 @@ public class SpringbootApplication implements WebMvcConfigurer {
 		//是否设置路径后缀自动匹配模式，如开启，那么/user就会匹配/user/
 		//如关闭，那就只会匹配/user
 		configurer.setUseTrailingSlashMatch(true);
+	}
+
+	@Bean
+	public ServletRegistrationBean servletRegistrationBean(){
+		//拦截请求/rest/*
+		ServletRegistrationBean bean = new ServletRegistrationBean(new ServletContainer(),"/rest/*");
+		//配置JerseyConfig  :  javax.ws.rs.Application
+		bean.addInitParameter(ServletProperties.JAXRS_APPLICATION_CLASS, JerseyConfig.class.getName());
+		return bean;
 	}
 }
