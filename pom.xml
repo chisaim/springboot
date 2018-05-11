@@ -52,7 +52,7 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-			<!--使用jetty容器，之前默认是tomcat
+			<!--使用jetty容器，之前默认是tomcat-->
 			<exclusions>
 				<exclusion>
 					<groupId>org.springframework.boot</groupId>
@@ -63,7 +63,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jetty</artifactId>
-		-->
 		</dependency>
 		<!--mybatis的springboot的框架，和分页组件-->
 		<dependency>
