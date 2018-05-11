@@ -25,6 +25,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -77,5 +78,15 @@ public class SpringbootApplication implements WebMvcConfigurer {
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(new Myinterceptor1());
 		registry.addInterceptor(new Myinterceptor2());
+	}
+
+	@Override
+	public void configurePathMatch(PathMatchConfigurer configurer) {
+		//是否设置后缀匹配模式，如开启true，那么/user.html、/user.aa、/user.*都是可以访问的
+		//如关闭false，就只能访问/user或/user/（前提是setUseTrailingSlashMatch这个是开启的）
+		configurer.setUseSuffixPatternMatch(false);
+		//是否设置路径后缀自动匹配模式，如开启，那么/user就会匹配/user/
+		//如关闭，那就只会匹配/user
+		configurer.setUseTrailingSlashMatch(true);
 	}
 }
