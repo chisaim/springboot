@@ -25,9 +25,15 @@ import org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguratio
 import org.springframework.boot.autoconfigure.web.servlet.WebMvcProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
@@ -48,7 +54,24 @@ public class SpringbootApplication implements WebMvcConfigurer {
 
 
 	public static void main(String[] args) throws SchedulerException, InterruptedException {
+
 		SpringApplication.run(SpringbootApplication.class, new String[]{"SanSan","ErEr","ChiSaiM"});
+		/*
+		ApplicationContext ctx = SpringApplication.run(SpringbootApplication.class, new String[]{"SanSan","ErEr","ChiSaiM"});
+//		String[] beans = ctx.getBeanDefinitionNames();//获取容器所有的加载对象
+//			@Service
+//			@Controller
+//			@Repository
+//			@Component
+//			@Configuration
+//			@RestController
+		String[] beans = ctx.getBeanNamesForAnnotation(RestController.class);//获取容器中添加这此注解的所有对象
+		int i = 0;
+		for(String bean : beans){
+			System.out.println(i++ + " : " + bean);
+		}
+		*/
+
 		System.out.println("scheduler.start.");
 		//调度器实例,并启动调度器
 		Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
