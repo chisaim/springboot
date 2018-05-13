@@ -3,6 +3,7 @@ package home.pb.spring.springboot;
 import com.github.pagehelper.PageHelper;
 import home.pb.spring.springboot.Interceptor.Myinterceptor1;
 import home.pb.spring.springboot.Interceptor.Myinterceptor2;
+import home.pb.spring.springboot.condition.service.CmdService;
 import home.pb.spring.springboot.config.JerseyConfig;
 import home.pb.spring.springboot.config.SpringBeanJobFactory;
 import home.pb.spring.springboot.properties.Email2Properties;
@@ -55,7 +56,12 @@ public class SpringbootApplication implements WebMvcConfigurer {
 
 	public static void main(String[] args) throws SchedulerException, InterruptedException {
 
-		SpringApplication.run(SpringbootApplication.class, new String[]{"SanSan","ErEr","ChiSaiM"});
+//		SpringApplication.run(SpringbootApplication.class, new String[]{"SanSan","ErEr","ChiSaiM"});
+
+		ApplicationContext ctx = SpringApplication.run(SpringbootApplication.class,args);
+		CmdService cmdService = ctx.getBean(CmdService.class);
+		cmdService.print();
+
 		/*
 		ApplicationContext ctx = SpringApplication.run(SpringbootApplication.class, new String[]{"SanSan","ErEr","ChiSaiM"});
 //		String[] beans = ctx.getBeanDefinitionNames();//获取容器所有的加载对象
@@ -72,6 +78,8 @@ public class SpringbootApplication implements WebMvcConfigurer {
 		}
 		*/
 
+		/*
+		//自动任务其中一中实现方式
 		System.out.println("scheduler.start.");
 		//调度器实例,并启动调度器
 		Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
@@ -88,6 +96,7 @@ public class SpringbootApplication implements WebMvcConfigurer {
 		TimeUnit.SECONDS.sleep(20);
 		scheduler.shutdown();
 		System.out.println("scheduler.shutdown.");
+		*/
 	}
 
 	@Bean
