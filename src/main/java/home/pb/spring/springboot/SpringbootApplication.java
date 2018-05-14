@@ -50,8 +50,8 @@ import java.util.concurrent.TimeUnit;
 //@Configuration
 //@ComponentScan
 @SpringBootApplication//等同于上面三个注解，这个是三合一注解
-//public class SpringbootApplication extends WebMvcConfigurationSupport{
-public class SpringbootApplication implements WebMvcConfigurer {
+public class SpringbootApplication extends WebMvcConfigurationSupport{
+//public class SpringbootApplication implements WebMvcConfigurer {
 
 
 	public static void main(String[] args) throws SchedulerException, InterruptedException {
